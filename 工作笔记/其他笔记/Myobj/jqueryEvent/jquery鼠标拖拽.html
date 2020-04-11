@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标拖拽</title>
+	<script type="text/javascript" src="./jquery-2.2.3.min.js"></script>
+	<style type="text/css">
+		#div{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			border-radius: 200px;
+			height: 230px;
+			width: 230px;
+			background-color: #ccc;
+			overflow:hidden;
+		}
+		img{
+			height: 230px;
+			width: 230px;
+		}
+		div:hover{/*鼠标移上去加样式*/
+			border: 3px solid red;
+		}
+		h1{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>隐藏</h1>
+	<div id="div">
+		<img src="./image/img10.jpg">
+	</div>
+</body>
+<script type="text/javascript">
+function drag(obj){
+	obj.bind("mousedown",start);
+
+	function start(event){
+		deltaX=event.clientX-obj.offset().left;
+		deltaY=event.clientY-obj.offset().top;
+
+		$(document).bind("mousemove",move);
+		$(document).bind("mouseup",stop);
+
+		return false;
+	}
+
+	function move(event){
+		obj.css({
+			"left":(event.clientX-deltaX)+"px",
+			"top":(event.clientY-deltaY)+"px",
+		})
+		return false;
+	}
+	function stop(){
+		$(document).unbind("mousemove",move);
+		$(document).unbind("mouseup",stop);
+	}
+}
+
+obj=$("#div");
+drag(obj);
+
+
+$('h1').show();
+/*$(document).contextmenu(function(event){//右键菜单事件
+
+	x=event.clientX;//鼠标的x坐标
+	y=event.clientY;//鼠标的y坐标
+
+	btn= event.button;//鼠标按钮码
+
+	if(btn==2){
+		$('ul').show().css({'left':x+'px','top':y+'px'})
+		return false;//返回false阻止默认行为和阻止冒泡
+	}
+})
+*/
+
+
+
+//live一直循环执行挂载//jquery事件委派
+$('.close').live('click',function(){
+	$(this).parent().hide(1000);
+})
+
+
+
+</script>
+</html>

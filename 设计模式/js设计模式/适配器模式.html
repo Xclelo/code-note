@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function pp(){
+			this.test=function(){
+				console.log('我是新test');
+			}
+
+		}
+		pp.prototype.gogo=function(){
+			console.log('我是新gogo');
+		}
+		function shipeiqi(){
+			var s=new pp;
+			var aa={
+				test:function(){
+					s.test();
+				}
+				go:function(){
+					s.gogo();
+				}
+			}
+			return aa;
+		}
+
+		var aa=shipeiqi();
+		aa.test();
+		aa.go();
+	</script>
+</body>
+</html>

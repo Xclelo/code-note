@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>vue组件</title>
+	<meta charset="utf-8" />
+    <script src="script/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-com1></my-com1>
+        <mycom1></mycom1>
+        <h2>{{msg}}</h2>
+        <mycom3></mycom3>
+        <login1></login1>
+        <login2></login2>
+        <mycom4></mycom4>
+
+
+        <!--<button @click="comName='login'">登录</button>
+        <button @click="comName='register'">注册</button>-->
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+        <!--
+        component 是一个占位符  :is属性是指定要展示的组件
+        -->
+        <component :is="comName"></component>
+
+
+        <!--    父组件可以在引用子组件的时候通过属性绑定的形式 把数据传給子组件-->
+        <childcom v-bind:parentmsg="msg"></childcom>
+
+        <!--    子组件通过事件调用的方式給父组件传递数据  需要先调用父组件的方法  然后以传参的方式传递数据-->
+        <childcom2 @func="show"></childcom2>
+
+        <h5>子组件传給父组件的数据{{sonmsg}}</h5>
+
+    </div>
+
+    <div id="vm2">
+
+    </div>
+
+
+    <template id="tmp1">
+        <div>
+            <h1>
+                第三种创建组件模式
+            </h1>
+        </div>
+    </template>
+
+
+    <template id="tmp2">
+        <div>
+            <h1>
+                外部私有组件
+            </h1>
+        </div>
+    </template>
+
+    <template id="tmp3">
+        <div>
+            <h1>
+                这是子组件
+            </h1>
+            <input type="button" value="点击传递父组件方法" @click="myclick"/>
+        </div>
+    </template>
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+   <script>
+       //使用Vue.extend 创建全局Vue组件
+       var com1 = Vue.extend({
+           template:'<h3>组件</h3>'//指定了组件要展示的HTML内容
+       })
+
+       Vue.component('myCom1', com1)
+       Vue.component('mycom1', com1)
+       Vue.component('mycom1', Vue.extend({
+           template: '<h3>组件</h3>'//指定了组件要展示的HTML内容
+       }))
+
+
+       //第二种创建  
+       Vue.component('mycom2', {
+           template: '<h3>组件</h3>'//指定了组件要展示的HTML内容
+       })
+
+       //第三种创建
+       Vue.component('mycom3', {
+           template:'#tmp1'
+       })
+
+
+
+
+       /*
+ 组件里面的也能有data
+ 
+ */
+       Vue.component('mycom4', {
+           template: '<h1>这是自己组件里面定义的========={{msg1}}</h1>',
+           data: function () {
+               return {
+                   msg1: '这是组件中自己定义的data',
+               }
+           }
+       })
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+       Vue.component('login', {
+           template: '<h3>登录组件</h3>'//指定了组件要展示的HTML内容
+       })
+       Vue.component('register', {
+           template: '<h3>注册组件</h3>'//指定了组件要展示的HTML内容
+       })
+
+
+
+       var vm = new Vue({
+           el: '#app',
+           data: {
+               msg: 'OK!',
+               comName: 'login',
+               sonmsg:null,
+           },
+           methods: {
+               show(data1) {
+                   console.log("调用了父组件上show方法" + data1);
+                   console.log(data1);
+                   this.sonmsg = data1;//传递过来了
+               }
+           },
+           components: {//定义私有组件
+               login1: {
+                   template: '<h1>私有组件</h1>',
+               },
+
+               login2: {
+                   template: '#tmp2'
+               },
+
+               //子组件获取父组件数据
+               childcom: {
+                   data() {//可读可写
+                       return {
+                           titi: '123456',
+                           msg:'子组件私有数据',
+                       }
+                   },
+                   template: '<h1 @click="change">子组件获取父组件数据的方法{{parentmsg}}</h1>',
+                   props: ['parentmsg'],//只能读取 不能再赋值
+                   methods: {
+                       change() {
+                           this.parentmsg='被修改了'
+                       }
+                   },
+               },
+               //子组件給父组件传递数据
+               childcom2: {
+                   data() {
+                       return {
+                           childmsg: '子组件数据',
+                       }
+                   },
+                   template: '#tmp3',
+                   methods: {
+                       myclick() {
+                           this.$emit('func', this.childmsg);
+                       }
+                   },
+
+               },
+           },
+  
+
+       });
+
+
+       var vm2 = new Vue({
+           el:'#vm2',
+           data: {},
+           components: {
+          
+           }
+       })
+
+
+
+
+
+
+
+
+
+
+   </script>
+
+
+
+
+</body>
+</html>

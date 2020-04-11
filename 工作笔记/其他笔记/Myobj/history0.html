@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    </script>
+</head>
+
+<body>
+<a href="history.html">跳转</a>
+<button id="btn" onclick="getLoc()">按钮</button>
+    <p id="ptime"></p>
+    <script>
+        function getLoc() {
+            //document.getElementById("ptime").innerHTML = window.location.href;
+            location.assign("http://www.baidu.com");
+        }
+
+        document.write("可用高度：" + screen.availHeight + "可用宽度" + screen.availWidth)
+        document.write("高度：" + screen.height + "宽度" + screen.width)
+
+    </script>
+
+</body>
+
+</html>

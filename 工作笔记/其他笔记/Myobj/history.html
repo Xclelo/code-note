@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    </script>
+</head>
+
+<body>
+  <form>
+      <input type="text" id="username"/>
+  </form>
+    <button id="btn" onclick="safe()">按钮</button><!--要放到form外面-->
+    <script>
+        function safe() {
+            var name = document.getElementById("username").value;
+            if (name == 'hello') {
+                history.go(-1);
+            } else {
+                alert("输入错误");
+            }
+        }
+    </script>
+</body>
+</html>

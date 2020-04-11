@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <script src="../lib/vue-2.5.21.js"></script>
+    <style>
+        .changeGreen {
+            color: green
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="panel panel-info" id='app' style="margin-top:60px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- input-group -->
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..." v-model='items.title'>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" v-on:click="addItem">
+
+                                    <!--加号开始-->
+                                    <span class='glyphicon glyphicon-plus'></span>
+                                    <!--加号结束-->
+
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+
+                        <!--水平线开始-->
+                        <hr>
+                        <!--水平线结束-->
+
+                        <!--列表组开始-->
+                        <div class="list-group">
+                            <div v-for="(vars,index) in todoList" class="list-group-item">
+
+                                <!--对号图标开始-->
+                                <span v-bind:class={changeGreen:vars.ok} v-on:click='hasgreen(index)' class="glyphicon glyphicon-ok-sign"></span>
+                                <!--对号图标结束-->
+
+                                &nbsp&nbsp{{vars.title}}
+
+                                <!--删除图标开始-->
+                                <span v-on:click='remove(index)' class="glyphicon glyphicon-remove-circle pull-right"></span>
+                                <!--删除图标结束-->
+
+                            </div>
+                        </div>
+                        <!--列表组结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                todoList: [
+
+                ],
+                color: false,
+                items: {
+                    title: '',
+                    ok: false
+                }
+            },
+            methods: {
+                hasgreen: function (index) {
+                    this.todoList[index].ok = 'true'
+                },
+                addItem: function () {
+                    var obj = Object.assign({}, this.items)
+                    this.todoList.push(obj)
+                    this.items.title = ''
+                },
+                remove: function (index) {
+                    console.log(this.todoList)
+                    this.todoList.splice(index, 1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

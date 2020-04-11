@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.2.3.min.js"></script>
+    <script src="TraversalDown.js"></script>
+    <!--<link type="text/css" rel="stylesheet" href="TraversalDown.css"/>-->
+    <style>
+        .bd *{
+            display:block;
+            border:3px solid gray;
+            color:gray;
+            padding:5px;
+            margin:15px;
+    }
+    </style>
+</head>
+<body>
+    <!--<div id="div1">div1
+        <div id="div2">div2
+            <p>
+                <a>HELLO</a>
+            </p>
+        </div>
+    </div>-->
+    <!--同级遍历--->
+    <div class="bd">
+        <p>P</p>
+        <h2>H2</h2>
+        <h3>H3</h3>
+        <h4>H4</h4>
+        <h5>H5</h5>
+        <h6>H6</h6>
+    </div>
+
+
+
+    <div>
+        <p>div1</p>
+    </div>
+    <div>
+        <p class="pclass">div2</p>
+    </div>
+    <div>
+        <p class="pclass">div3</p>
+    </div>
+    <div>
+        <a>div4</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <script>
+        /*
+        单例模式作用
+        1.模块间通信
+        2.系统中某个类的对象只能存在一个
+        3.保护自己的属性和方法
+        
+        
+        */
+
+        /*
+        例子一：
+        1.独立的对象   建两个 
+        2.两个对象通过menling进行通信
+        3.先看一个对象是否有门 如果有门直接通过门铃通信didi 如果没门先建门
+        4.两个单例之间开始通信
+        
+        */
+
+        var xiaowang = (function (argument) {
+            var xiaowangjia = function (message) {
+                this.menling = message;
+            }
+            var men;
+            var info = {
+                sendMessage: function () {
+                    if (!men) {
+                        new xiaowangjia(message);
+                    }
+                    return men;
+                }
+            };
+            return info;
+
+
+        })();
+
+        var xiaoli = {
+            callXiaowang: function (msg) {
+                var _xw = xiaowang.sendMessage(msg);
+                alert(_xw.menling);
+                _xw = null;//闭包清除内存泄露
+            }
+        }
+
+        xiaoli.callXiaowang('didi');
+
+        //例子二：页面上有6个按钮
+        //abc=>top
+        //def=>banner
+        var top = {
+            init: function () {
+                this.render();
+                this.bidn();
+            },
+            a: 4,
+            render: function () {
+                var me = this;
+                me.btna = $('#a');
+            },
+            bind: function () {
+                var me = this;
+                me.btna.click(function () {
+                    //业务逻辑取出去
+                    me.test();
+                });
+            },
+            test: function () {
+                a = 5;
+            }
+        }
+
+
+        var banner = {
+            init: function () {
+                this.render();
+                this.bidn();
+            },
+            a: 4,
+            render: function () {
+                var me = this;
+                me.btna = $('#d');
+            },
+            bind: function () {
+                var me = this;
+                me.btna.click(function () {
+                    //业务逻辑取出去
+                    me.test();
+                });
+            },
+            test: function () {
+                //a= 5;
+                top.a = 6;
+            }
+        }
+
+
+        top.init();
+        banner.init();
+    </script>
+</body>
+</html>

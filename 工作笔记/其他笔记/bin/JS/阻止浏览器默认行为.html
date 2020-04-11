@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="fun.js"></script>
+</head>
+<!--<body>
+    <a href="" onclick="alert(1); return false;">页面背景</a>
+    <form action="index.php" onsubmit="return check();">
+        用户：<input type="text" id="inputid"/>
+        <br />
+        <input type="submit" value="提交"/>
+    </form>
+
+
+
+    <script>
+        function check() {
+            var user = document.getElementById("inputid").value;
+            if (user) {
+                return true;
+            } else {
+                alert("user don`t null!");
+                return false;
+            }
+        }
+    </script>
+</body>-->
+
+<body>
+    <form action="index.php" id="formid">
+        用户：<input type="text" id="inputid" />
+        <br />
+        <input type="submit" value="提交" />
+    </form>
+
+    <script>
+        var formobj = document.getElementById("formid");
+        formobj.onsubmit = function (event) {
+            var userval = document.getElementById("inputid").value;
+            console.log(event);
+            if (!userval) {
+                event.preventDefault();
+                //return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

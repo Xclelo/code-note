@@ -1,0 +1,257 @@
+nrm 的安装  镜像地址  
+
+npm i nrm -g
+nrm ls
+nrm use cnpm
+
+
+npm i cnpm -S
+
+
+
+
+
+
+npm install -d 就是 npm install --save-dev 安装到开发环境 例如 gulp ，babel，webpack 一般都是辅助工具
+npm insatll -s 就是npm install --save  安装到生产环境 如 vue ,react 等
+
+npm install  与 npm i的区别
+1. 用npm i安装的模块无法用npm uninstall删除，用npm uninstall i才卸载掉 
+2. npm i会帮助检测与当前node版本最匹配的npm包版本号，并匹配出来相互依赖的npm包应该提升的版本号 
+3. 部分npm包在当前node版本下无法使用，必须使用建议版本 
+4. 安装报错时intall肯定会出现npm-debug.log 文件，npm i不一定
+
+
+
+ npm i webpack -g//全局安装  只安装一次就行
+ 
+ npm init -y  初始化配置文件
+ npm i jquery -S 安装jquery
+ 
+ webpack .\src\main.js --output .\dist\bundle.js    //以前版本不需要--output,高级的版本需要
+ 
+ 安装 webpack-dev-server工具  实现自动打包编译的功能
+ 第一步：npm i webpack-dev-server -D
+ 第二步：在package.json中添加
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --port 3000 --contentBase src --hot"
+  },
+ 第三步：运行命令 npm run dev
+ 
+ 注意 主页面index.html     <script src="bundle.js"></script>  是要引入根目录的bundle.js
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ npm i html-webpack-plugin -D   在内存中生成HTML页面的插件
+ 
+ 并在webpack.config.js文件中进行相干的配置
+ const path = require('path')
+const webpack = require('webpack')
+
+const htmlWebpackPulgin = require('html-webpack-plugin')
+
+module.exports = {
+  entry:path.join(__dirname,'./src/main.js'),
+  output:{
+      path:path.join(__dirname,'./dist'),
+      filename:'bundle.js'
+  },
+  plugins:[//第三方插件生成的节点
+      new htmlWebpackPulgin({//创建一个在内存中生成HTML 页面的插件
+        template:path.join(__dirname,'./src/index.html'),
+        filename:'index.html'
+      })
+  ]
+}
+
+
+
+
+
+打包样式 CSS LESS SCSS
+安装 npm i style-loader css-loader -D    //处理css
+
+npm i less-loader -D					//处理less
+npm i less -D       
+
+npm i sass-loader -D					//处理scss
+npm i node-sass -D             
+
+
+
+url打包
+npm i url-loader file-loader -D 
+
+
+
+babel  高级语法转换低级语法
+第一步：安装   npm i babel-core babel-loader babel-plugin-transform-runtime -D
+       npm i babel-preset-env babel-preset-stage-0 -D
+
+第二步：{test:/\.js$/,use:'babel-loader',exclude:/node_modules/}
+
+第三步：在 跟目录下创建一个  .babelrc  的配置文件
+
+
+npm uninstall babel-loader//卸载
+npm install babel-loader@7.1.5//安装具体版本
+
+
+
+
+vue 在webpack中应用
+
+npm i vue -S
+
+由于webpack 无法打包.vue文件
+1.
+cnpm i vue-loader vue-template-complier -D
+2.添加加载规则
+{ test: /\.vue$/, use: "vue-loader" }
+3.
+//webpack.config.js
+ 
+//引入插件
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+ 
+//......
+  plugins: [
+   //......
+    new VueLoaderPlugin() //配置插件
+  ]
+
+
+
+
+
+1.
+node 中向外暴露成员的形式
+module.exports = {}
+
+node 导入成员
+var 名称 = require('模块标识符')
+
+
+2.ES6中向外暴露成员
+export default 和 export
+        export default 和 export 的区别
+ 例子：
+ 				向外暴露：test.js
+ 				var info = {
+ 				  name:'clelo',
+ 				  age:18
+ 				}
+        export default info;//只能向外暴露一次
+        
+        引入：main.js
+        import a from './test.js'
+        
+        
+        向外暴露：test.js
+        export var title = '123'   //按需导出
+        export var title2 = '456'
+        
+        引入：main.js
+        import a,{title as t,title2} from './test.js'  //as别名
+        
+        
+        
+
+ES6导入
+import vue from 'vue'
+import './lib/vue'
+
+
+
+
+
+vue-router在webpack中的使用
+npm i vue-router -D
+
+1.导入包
+import VueRouter from 'vue-router'
+2.手动安装VueRouter
+Vue.use(VueRouter)
+3.创建路由对象
+var router = new VueRouter({
+  routes:[
+    {path:'/account',component:account},
+    {path:'/account2',component:account2},
+  ]
+})
+
+
+.vue文件中的style标签中lang属性和scoped属性
+
+
+vue-cli导入mint-ui遇到的问题
+babel配置文件中需要用以下格式书写
+
+  plugins: [
+    ["component", 
+    {
+      "libraryName": "mint-ui",
+      "style": true
+    }
+  ]
+]
+
+
+
+将项目放到git中托管步骤
+1.
+git init
+2.查看提交状态
+git status
+3.
+git add .
+4.
+git commit -m "init my project"//git commit -m "提交信息"
+
+//在码云上创建新项目  要你输入的指令
+git remote add origin https://gitee.com/ConstMe/vueDom1.git
+git push -u origin master
+
+
+
+
+
+取消严格模式的插件：babel-plugin-transform-remove-strict-mode
+1.npm install babel-plugin-transform-remove-strict-mode -D
+2. babel文件中 plugins加入以下代码
+"transform-remove-strict-mode"
+
+项目样式笔记：
+顶部固定样式：mint-ui --> header
+轮播图：mint-ui -->  Swipe
+底部样式：mui-->的tab-webview-main.html    
+九宫格样式：  mui-->grid-default.html
+新闻列表样式：mui-->media-list.html
+图片上面的左右滚动滑轮样式： MUI-->tab-top-webview-main.html-->此页面需要导入mui.min.js文件 
+												 		1.      import mui from '../../lib/mui/js/mui.min.js'
+												 		2.      mounted(){
+        															mui('.mui-scroll-wrapper').scroll({
+            													deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+        																});
+    																	} 
+     
+		注意:在vue-cli3中导入mui.min.js 需要项目取消严格模式  步骤以下：
+		    1.在项目的跟目录下创建.eslintignre.js文件  -->src/lib/mui/js/mui.min.js      //输入不想严格模式编译的代码
+		    2.在babel.config.js文件中添加-->ignore:[  './src/lib/mui/js/mui.min.js']
+     
+图片懒加载：mint-ui --> lazy-load
+图片缩略图插件：vue-preview  一个vue集成PhotoSwipe图片预览插件
+
+
+项目到安卓手机上面调式：
+1.与电脑同一个wifi
+到package.json问文件中   启动项加入“--host ip地址”
+(vue-cli无需这个操作 直接在手机上打开wifi地址)
+

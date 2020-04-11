@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的创建方式</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <mycomp1></mycomp1>
+        <mycomp2></mycomp2>
+        <mycomp3></mycomp3>
+        <mycomp4></mycomp4>
+    </div>
+    
+    <template id="mycomp2">
+        <h1>这是组件2{{msg}}</h1>
+    </template>
+
+    <script>
+
+        Vue.component('mycomp1',{
+            template:'<h1>这是组件1</h1>'
+        })
+
+        Vue.component('mycomp2',{
+            template:'#mycomp2',
+            data:function(){
+                return {
+                    msg:'=====>组件2中的数据'
+                }
+            }
+        })
+
+        var com1=Vue.extend({
+            template:'<h1>用extend创建的全局组件</h1>'
+        })
+        Vue.component('mycomp4',com1)
+        var vm=new Vue({
+            el:'#app',
+            data:{},
+            methods:{},
+            components:{
+                'mycomp3':{
+                    template:'<h1>这是私有组件</h1>'
+                }
+            }
+            
+        });    
+    </script>
+</body>
+</html>

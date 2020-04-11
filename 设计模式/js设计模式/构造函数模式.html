@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        /*
+        构造函数模式作用：
+        1.用于创建特定类型的对象
+        2.第一次声明的时候给对象赋值
+        3.自己声明构造函数，赋予属性和方法
+        
+        注意事项：
+        1.构造函数大写字母开头（建议）
+        2.声明函数的时候处理业务逻辑
+        3.注意new的成本（继承）  放到原型链上
+        */
+
+
+         
+        //js开发的时候写单引号（编译的时候双引号会编程成单引号）
+
+        var AA = {//构造函数与单例函数配合使用
+            zaomen: function (huawen) {
+                if (!(this instanceof zaomen)) {
+                    return new zaomen;
+                }
+                var _huawen = huawen;
+                if (huawen) {
+                    _huawen = huawen;
+                }
+                this.suo = "普通";
+                this.huawen = _huawen;
+                this.create = function () {
+                    return "[锁头]" + this.suo + "[花纹]" + this.huawen;
+                }
+            }
+        }
+
+
+        var BB = {
+            zaomen: function (huawen) {
+                if (!(this instanceof zaomen)) {
+                    return new zaomen;
+                }
+                var _huawen = huawen;
+                if (huawen) {
+                    _huawen = huawen;
+                }
+                this.suo = "普通";
+                this.huawen = _huawen;
+                this.create = function () {
+                    return "[锁头]" + this.suo + "[花纹]" + this.huawen;
+                }
+            }
+        }
+        function zaomen(huawen) {
+            if (!(this instanceof zaomen)) {
+                return new zaomen;
+            }
+            var _huawen = huawen;
+            if (huawen) {
+                _huawen = huawen;
+            }
+            this.suo = "普通";
+            this.huawen = _huawen;
+            this.create = function () {
+                return "[锁头]" + this.suo + "[花纹]" + this.huawen;
+            }
+        }
+
+        var xiaozhao = new AA.zaomen();
+        alert("xiaozhao"+xiaozhao.create("红色"));
+
+
+        var xiaoli = new BB.zaomen();
+        alert("xiaozhao" + xiaoli.create("黄色"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

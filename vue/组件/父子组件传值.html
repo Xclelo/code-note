@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父传子</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <childcom :pmsg="msg"></childcom>
+
+    </div>
+
+
+    <template id="childcom">
+        <h1>这是子组件==========={{childmsg}}======={{pmsg}}</h1>
+    </template>
+
+
+
+
+    <script>
+        var childcom={
+            template:'#childcom',
+            data:function(){
+                return{
+                    childmsg:'子组件数据'
+                }
+            },
+            props:['pmsg'],//父组件传递过来的，
+        }
+
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:'父组件数据'
+            },
+            methods:{},
+            components:{
+                childcom
+                //childcom:childcom
+            },
+        });
+    </script>
+</body>
+</html>

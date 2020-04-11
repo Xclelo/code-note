@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax等</title>
+	<script type="text/javascript" src="./jquery-2.2.3.min.js"></script>
+
+<style type="text/css">
+	.main{
+		width: 1300px;
+		margin:0 auto;
+	}
+	.img{
+		height: 300px; 
+		overflow: hidden;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<h1>aaaaaaaaaaaaaaaaaaaa</h1>
+		<h1>bbbbbbbbbbbbbbbbbbbb</h1>
+	</div>
+	<div class="main">
+		<div class="img">
+			<img src="./image/img10.jpg">
+		</div>
+		<br>
+		<button>left</button>
+		<button>rigth</button>
+		<button>up</button>
+		<button>down</button>
+	</div>
+
+</body>
+<script type="text/javascript">
+
+//$('h1').data({'n':0})//jquery/核心/数据缓存
+
+//自定义动画animate
+$('button').eq(0).click(function(){
+	$('img').animate({
+		'margin-left':'-1300px',
+		'opacity':0,//透明度
+	},1000,function(){
+		$('body').css({'background-color':'#f00'})
+	})
+})
+
+/*
+//js中用ajax要生成ajax对象
+xhr=new XMLHttpRequest();
+//js get请求php文件，同时传递一个id
+xhr.open('get','delete.php?id='+id,true);
+//ajax开始异步连接并请求delete。php
+xhr.send();
+//js监听整个通讯过程
+xhr.onreadystatechange=function(){
+	if(xhr.readyState==4){
+		r=xhr.responseText;
+		if(r=='1'){
+		}
+	}
+}
+*/
+
+
+//jquery中使用ajax
+/*$.get('delete.php',{id;id},function(r){
+	if(r=='1'){
+
+	}
+
+
+});*/
+
+
+//serialize()  表单元素转换字符串
+//<input type='text' name='username'>
+//<input type='text' name='passwd'>
+//<input type='button' value='提交'>
+/*$(':button').click(function(){
+	str=$('form').serialize();
+	alert(str);//如果输入clelo，123456 则str='username=clelo&passwd=123456'
+})*/
+
+
+</script>
+</html>

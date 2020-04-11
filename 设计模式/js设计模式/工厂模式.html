@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+
+
+
+
+    <script>
+        var gongchang = {};
+        gongchang.chanyifi = function () {
+            this.gongren = 50;
+            alert('我们有'+this.gongren);
+        }
+        gongchang.chanxie = function () {
+            alert('产鞋子');
+        }
+        gongchang.yunshu = function () {
+            alert('运输');
+        }
+        gongchang.changzhang = function (pare) {
+            return new gongchang[para]();
+        }
+        var me = gongchang.changzhang('chanyifu');
+        alert(me.gongren);
+    </script>
+</body>
+</html>

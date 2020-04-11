@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./jquery.min.js"></script>
+</head>
+<body>
+	<button id="btn">获取数据</button>
+
+
+	<script type="text/javascript">
+		/*常规写法*/
+		/*
+		$('#btn').bind('click',function(){
+			$.ajax({
+				url:'./data.json',
+				type:'get',
+				dataType:'json',
+				success:function(data){
+					console.log(data)
+				}
+			})
+		})
+		*/
+	
+		/*Promise写法*/
+		$('#btn').bind('click',function(){
+			$.ajax({
+				url:'./data.json',
+				type:'get',
+				dataType:'json',
+			})
+			.then(function(data){
+				console.log(data)
+			})
+		})
+	</script>
+</body>
+</html>

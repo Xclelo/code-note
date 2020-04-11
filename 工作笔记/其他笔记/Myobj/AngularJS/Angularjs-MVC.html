@@ -1,0 +1,29 @@
+﻿<!--
+
+-->
+
+
+<!DOCTYPE html>
+<html><!--声明管理边界-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>AngularJS进阶</title>
+	<meta charset="utf-8" />
+</head>
+<body hg-app="app">
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('app', [])
+        .controller('Myctrl', function ($scope) {
+            $scope.msg = "angular";
+        })
+    </script>
+
+    <div ng-controller="Myctrl">
+        <input ng-model="msg"/>
+        <h1>{{msg}}</h1>
+    </div>
+  
+</body>
+
+</html>

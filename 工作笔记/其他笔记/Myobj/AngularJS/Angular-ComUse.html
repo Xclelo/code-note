@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js"></script>
+	<script src="Angular-ComUse.js"></script>
+</head>
+<body ng-app="app" ng-controller="AddressCtrl">
+	<div>地址管理</div>
+		<ul>
+			<li ng-repeat="a in list" ng-class="{'selected':$last}">
+				<h4 ng-if="!$first">{{$index + a.address}}</h4>
+				
+			</li>
+		</ul>
+</body>
+
+</html>

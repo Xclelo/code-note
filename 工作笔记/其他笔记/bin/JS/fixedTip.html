@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>固定提示和回到顶部</title>
+	<script src="fun.js"></script>
+    <style>
+        #imgid {
+            position: absolute;
+        }
+    </style>
+</head>
+
+
+<body>
+	<div>
+		<img src="image/color1.jpg" id="imgid">
+	</div>
+	<div>
+		<h1>1</h1>
+		<h1>2</h1>
+		<h1>3</h1>
+		<h1>4</h1>
+		<h1>5</h1>
+		<h1>6</h1>
+		<h1>7</h1>
+		<h1>8</h1>
+		<h1>9</h1>
+		<h1>10</h1>
+		<h1>11</h1>
+		<h1>12</h1>
+		<h1>13</h1>
+		<h1>14</h1>
+		<h1>15</h1>
+		<h1>16</h1>
+		<h1>17</h1>
+		<h1>18</h1>
+	</div>
+
+    <script>
+        var imgobj=document.getElementById("imgid");
+        var imgw=imgobj.clientWidth;
+        var winw=document.documentElement.clientWidth;
+        var imgleft=winw-imgw;
+        imgobj.style.left=imgleft-100+"px";
+        imgobj.style.top=100+"px";
+        console.log(imgobj);
+        console.log(imgw);
+        console.log(winw);
+        console.log(imgleft);
+        window.onscroll=function(){
+	        var sh=document.documentElement.scrollTop;
+	        imgobj.style.top=sh+100+"px";
+        }
+    </script>
+</body>
+
+
+
+
+</html>

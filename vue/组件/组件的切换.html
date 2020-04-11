@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的切换</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+    <style>
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+
+        .v-enter-active,
+        .v-leave-active{
+            transition: all 0.5s ease;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <a href="" @click.prevent="inFun">登录</a>
+        <a href="" @click.prevent="out">注销</a>
+        <login v-if="falg"></login>
+        <logout v-else="falg"></logout> -->
+
+        <!--component是一个占位符，：is属性可以用来指定展示组件的名称-->
+        <a href="" @click.prevent="compname='login'">登录</a>
+        <a href="" @click.prevent="compname='logout'">注销</a>
+        <!-- <component :is="compname"></component> -->
+
+        <!-- 动画标签transition -->
+        <transition mode="out-in">
+            <component :is="compname"></component>
+        </transition>
+    </div>
+
+    <template id="login">
+        <h1>这是登录组件</h1>
+    </template>  
+    <template id="logout">
+            <h1>这是注销组件</h1>
+        </template>  
+    <script>
+
+        Vue.component('login',{
+            template:'#login'
+        })
+        
+        Vue.component('logout',{
+            template:'#logout'
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                falg:true,
+                compname:''
+            },
+            methods: {
+                inFun(){
+                    this.falg=true
+                },
+                out(){
+                    this.falg=false
+                },
+            },
+        }); 
+    </script>
+</body>
+
+</html>

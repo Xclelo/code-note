@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class的多种方法绑定</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+    <style type="text/css">
+        .red{
+            color: red;
+        }
+        .thin{
+            font-weight: 200;
+        }
+        .initial{
+            font-style: initial;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 class="red thin">这是婚纱哈哈哈啥的哈克发哈开发</h1>
+        <h1 :class="['red' , 'thin']">这是婚纱哈哈哈啥的哈克发哈开发</h1>
+        <h1 :class="['red' , 'thin', flag?'initial':'']">这是婚纱哈哈哈啥的哈克发哈开发</h1>
+        <h1 :class="['red' , 'thin', {'initial':flag}]">这是婚纱哈哈哈啥的哈克发哈开发</h1>
+        <h1 :class="obj">这是婚纱哈哈哈啥的哈克发哈开发</h1>
+
+    </div>
+
+
+    <script>
+      
+
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                flag:true,
+                obj:{red:true,thin:true,initial:true}
+            },
+            methods:{},
+            components:{
+            },
+        });
+    </script>
+</body>
+</html>

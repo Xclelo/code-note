@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ref</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click="getDom" ref="refbtn">
+        <mylogin ref="mylogin"></mylogin>
+    </div>
+    <template id="login">
+        <h1>登录组件</h1>
+    </template>
+
+    <script>
+
+        var mylogin={
+            template:'#login',
+            data:function(){
+                return {
+                    cmsg:'子数据'
+                }
+            },
+            methods:{
+                show(){
+                    console.log('子方法')
+                }
+
+            }
+        }
+        var vm =new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                getDom(){
+                    this.$refs.mylogin.show()
+                    console.log(this.$refs.mylogin.cmsg)
+                    console.log(this.$refs.refbtn.value)
+                }
+            },
+            components:{
+                mylogin
+            }
+        })
+    </script>
+</body>
+</html>

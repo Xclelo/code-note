@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    </script>
+    <link rel="stylesheet" type="text/css" href="mycss" />
+</head>
+
+<body>
+   
+    <form>
+        <input type="text" onselect="change(this)"/>
+    </form>
+    <script>
+        function change(a){
+            a.style.background = "red";
+        }
+    </script>
+
+    <!---句柄-->
+    <button id="btn">按钮</button>
+    <script>
+        document.getElementById("btn").addEventListener("click", function ()
+        { alert("hello11") })
+        var x = document.getElementById("btn");
+        x.addEventListener("click", hello);
+        x.addEventListener("click", world);
+        x.removeEventListener("click",hello);
+        function hello() {
+            alert("hello");
+        }
+        function world() {
+            alert("world");
+        }
+    </script>
+
+    <div id="div" class="div">hello</div>
+    <button onclick="demo()">按钮2</button>
+    <script>
+        function demo() {
+            document.getElementById("div").style.color = "blue";
+        }
+    </script>
+
+    <!--修改属性-->
+    <br />
+    <a id="aid" href="http://www.baidu.com">lianjie</a>
+    <button onclick="changehref()">修改连接</button>
+    <script>
+        function changehref() {
+            document.getElementById("aid").href = "http://www.jikexuyuan.com";
+        }
+    </script>
+
+    <br />
+    <!--
+     时间对象event:
+     type:获取事件类型
+     target:获取事件目标
+     stopPropagation():阻止时间冒泡
+     preventDefault():阻止事件默认行为
+     -->
+    <div id="divType">
+        <button id="btnType">按钮时间冒泡</button>
+        <a id="alink" href="http://www.baidu.com"></a>
+    </div>
+    <script>
+        document.getElementById("btnType").addEventListener("click",showType);
+        document.getElementById("divType").addEventListener("click", showDiv);
+        document.getElementById("alink").addEventListener("click", showa);
+        function showType(event) {
+            alert(event.type);
+            event.stopPropagation();//阻止事件冒泡
+        }
+        function showDiv(event) {
+            alert("div");
+        }
+        function showa(event) {
+            event.preventDefault();
+        }
+    </script>
+
+    <!--DOM对象控制html元素-->
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <a id="aid" title="得到了a的标间属性">点击</a>
+    <a id="aid2">点击</a>
+    <div id="innert">
+        <p id="pid">div的P元素</p>
+    </div>
+    <script>
+        function getName() {
+            var count = document.getElementsByTagName("p");
+            alert(count.length);
+            var p = count[2];
+            p.innerHTML = "world";
+        }
+       
+        function getAttr() {
+            var anode = document.getElementById("aid");
+            var attr = anode.getAttribute("id"); //获取元素属性
+            alert(attr);
+        }
+
+        function setAttr() {
+            var anode = document.getElementById("aid2");
+            var attr = anode.setAttribute("title","动态设置a的title属性"); //获取元素属性
+            alert(attr);
+        }
+
+        function addNode() {
+            var div = document.getElementById("innert");
+            var node = document.getElementById("pid");
+            var newnode = document.createElement("p");
+            newnode.innerHTML = "动态添加第一个p元素";
+            div.insertBefore(newnode,node);
+        }
+
+        function removeNode() {
+            var div = document.getElementById("innert");
+            var p = div.removeChild(div.childNodes[1]);
+        }
+    </script>
+
+
+
+
+</body>
+</html>

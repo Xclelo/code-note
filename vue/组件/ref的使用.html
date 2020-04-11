@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ref2</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <son ref="sonref"></son>
+    </div>
+    <template id="sondom">
+        <input type="text" ref="input">
+    </template>
+    <script>
+        var son = {
+            template:'#sondom',
+            data(){
+                return{
+                    sonMsg:"子数据"
+                }
+            },
+            methods:{
+                // 用来从父级组件聚焦输入框
+                sonfocus: function () {
+                    this.$refs.input.focus()
+                }
+            }
+        }
+        var vm = new Vue({
+            el:'#app',
+            data(){
+                return{
+
+                }
+            },
+            mounted(){
+                console.log(this.$refs.sonref)
+                //调用子组件的sonfocus方法
+                this.$refs.sonref.sonfocus();//父组件可以通过此语句设置子组件上的dom事件
+            },
+            components:{
+                son
+            },
+        })
+    </script>
+</body>
+</html>

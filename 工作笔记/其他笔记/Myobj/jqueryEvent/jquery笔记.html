@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./jquery-2.2.3.min.js"></script>
+	<style type="text/css">
+		.img{
+			border: 2px solid red;
+			border-radius: 100px;
+			height: 100px;
+			width: 100px; 
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img class="img" src="./image/imgfour.jpg">
+	</div>
+
+
+
+<script type="text/javascript">
+$(function(){
+	//等DOM加载完毕时执行以下所有代码
+	var h=$('img').height();
+	var w=$('img').width();
+	alert(h+'-'+w);
+});
+//等于以下代码：
+$(document).ready(function(){
+  // 在这里写你的代码...
+});
+
+
+//2）资源加载完毕(图片)
+$(window).load(function(){
+
+})
+
+
+    </script>
+</body>
+
+</html>		

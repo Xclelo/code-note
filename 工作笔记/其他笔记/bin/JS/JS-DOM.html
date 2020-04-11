@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <!--<h1 id="hid" class="hcls" name="hname" title="title1"><span>TEST</span></h1>
+    <h1>1</h1>
+    <h1>2</h1>
+    <h1>3</h1>
+    <h1>4</h1>-->
+    
+
+    <!--<img src="a.jpg" />
+    <img src="b.jpg" />
+    <img src="c.jpg"/>-->
+
+
+
+    <form>
+        <input type="text" />
+        <input type="text" />
+        <input type="text" />
+    </form>
+    <form>
+        <input type="checkbox" />a
+        <br />
+        <input type="checkbox" />b
+        <br />
+        <input type="checkbox" />c
+    </form>    
+    <button onclick="alll()">全选</button>
+    <button onclick="notall()">全不选</button>
+    <button onclick="fan()">反选</button>
+    <script>
+        //var obj = document.getElementById("hid");
+        //obj.setAttribute("name", "othername");//设置和过去元素标签的对象的属性
+        //alert(obj.getAttribute("title"));
+
+        //alert(obj.className);
+        //alert(obj.tagName);//标签名
+
+        //alert(obj.innerHTML);
+        //alert(obj.outerHTML);
+        //alert(obj.textContent);
+
+
+        //var objs = document.getElementsByTagName("h1");
+        //for (var i in objs) {
+        //    document.write("<h2>",i,"<h2>");
+        //}
+        //console.log(objs[1].innerHTML);
+
+
+        //图片集合对象
+        //var imgs = document.images;
+        //for (var i = 0; i < imgs.length; i++) {
+        //    imgs[0].onclick = function () {
+        //        this.style.display = "none";
+        //    }
+        //}
+
+        /*
+        文档内常用集合：
+        forms
+        elements
+        options
+        rows
+        cells
+        images
+        links
+        anchors
+        frames
+        */
+        //document.anchors;
+        //document.images;
+        //document.links;
+
+        
+        var forms = document.forms;
+        var ements = forms[0].elements;
+        ements[2].focus();
+        ements[1].value = "hanahanhs";
+
+        var forms1 = document.forms;
+        var ements1 = forms[1].elements;
+        function alll() {
+            for (var i = 0; i < ements1.length; i++) {
+                ements1[i].checked = true;
+            }
+        }
+        function notall() {
+            for (var i = 0; i < ements1.length; i++) {
+                ements1[i].checked = false;
+            }
+        }
+        function fan() {
+            for (var i = 0; i < ements1.length; i++) {
+                ements1[i].checked = !ements1[i].checked;
+            }
+        }
+        
+    </script>
+</body>
+</html>

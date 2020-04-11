@@ -1,0 +1,73 @@
+<!--
+1.test方法    
+2.exec方法 检索字符串中的指定值，返回值是被找到的值，如没有则返回null
+3.  /my/gi    “g”全局  “i”忽视大小写
+4.match
+5.search 返回的是数字
+-->
+
+
+<meta charset="utf-8" />
+<script type="text/javascript">
+    var patt1 = new RegExp("hello");
+    var patt2 = /word/;           //正则表达式
+
+    var pat = /my/;
+    var str = "my code is my code...";
+    console.log(pat.test(str));//true
+
+    var pat = /my/ig;
+    var str = "my code is my code...";
+    console.log(str.search(pat));//0
+
+    var pat = /my/ig;
+    var str = "my code is My code...";
+    console.log(str.match(pat));//["my","My"]
+
+    var str = "my code1 is My code2...";
+    console.log(str.search(/\d+/));//[1]
+    console.log(str.search(/\d+/g));//[1,2]
+
+    var str = "hello i am kongkong";
+    console.log(str.replace(/kong/i, "test"));//hello i am testkong
+    console.log(str.replace(/kong/ig, "test"));//hello i am testtest
+
+    var str = "hello i am kongkong";
+    str.split("");//["h", "e", "l", "l", "o", " ", "i", " ", "a", "m", " ", "k", "o", "n", "g", "k", "o", "n", "g"]
+    str.split(/\s+/);//   \s是" "  ["hello", "i", "am", "kongkong"]
+
+    var str = "is this all there is?";
+    var patt1 = /[a-h]/g;
+    console.log(str.match(patt1));//["h", "a", "h", "e", "e"]
+    
+    var str = "is this all there is?";
+    var patt1 = /[^jike]/g;
+    console.log(str.match(patt1));//["s", " ", "t", "h", "s", " ", "a", "l", "l", " ", "t", "h", "r", " ", "s", "?"]
+    
+    var str = "is this all there is?";
+    var patt1 = /is|ther/g;
+    console.log(str.match(patt1));//["is", "is", "ther", "is"]
+
+    var str = "hot is het!";
+    var patt1 = /h.t/g;
+    console.log(str.match(patt1));//["hot", "het"]
+
+    /*
+    n? 匹配任何包含零个或一个n的字符串
+    n{X,}匹配包含至少X个n的
+    n$ 匹配任何结尾为n的字符串
+    ^n 匹配任何开头为n的字符串
+    */
+    
+    var str = "1,100 or 1000?";
+    var patt1 = /10?/g;
+    console.log(str.match(patt1));//
+
+    
+
+
+    //写正则网站：www.w3cfuns.com
+    //分析正则表达式的网站：regexper.com
+
+
+</script>

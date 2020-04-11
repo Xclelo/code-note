@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>人物移动与弹力球</title>
+	<script src="fun.js"></script>
+    <style>
+        #imgid {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+	<div>
+		<img src="image/color1.jpg" id="imgid">
+	</div>
+    <script>
+/*var x=0;
+var y=0;
+var v=18;
+document.onkeydown=function(event){
+	var kc=event.keyCode;
+	console.log(kc);
+	switch(kc){
+		//左
+		case 37:
+		x+=-v;
+		if(x<=0){
+			x=0;
+		}
+		$("imgid").style.left=x+"px";
+		break;
+		//上
+		case 38:
+		y+=-v;
+		if(y<=0){
+			y=0;
+		}
+		$("imgid").style.top=y+"px";
+		break;
+		//右
+		case 39:
+		x+=v;
+		$("imgid").style.left=x+"px";
+		break;
+		//下
+		case 40:
+		y+=v;
+		$("imgid").style.top=y+"px";
+		break;
+	}
+}*/
+
+var xv=10;
+var yv=10;
+var x=0;
+var y=0;
+var h=document.documentElement.clientHeight-32;
+var w=document.documentElement.clientWidth-32;
+setInterval(function(){
+x+=xv;
+y+=yv;
+if(y>=h){
+	y=h;
+	yv=-yv;
+}
+if(y<=0){
+	yv=-yv;
+
+}
+if(x>=w){
+	x=w;
+	xv=-xv;
+}
+if(x<=0){
+	xv=-xv;
+}
+$("imgid").style.left=x+"px";
+$("imgid").style.top=y+"px";
+},10)
+
+    </script>
+</body>
+
+</html>

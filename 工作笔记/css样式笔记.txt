@@ -1,0 +1,54 @@
+1.
+flex弹性盒子
+
+justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+
+dispaly:flex;
+flex-direction:column;
+justify-content:space-between;
+
+.box{
+  display: flex;
+  flex-direction: row | row-reverse | column | column-reverse;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  flex-flow: <flex-direction> <flex-wrap>;
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+  align-items: flex-start | flex-end | center | baseline | stretch;
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+  
+  .item{
+     order: <integer>;
+     flex-grow: <number>; /* default 0 */
+     flex-shrink: <number>; /* default 1 */
+     flex-basis: <length> | auto; /* default auto */
+     flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+     align-self: auto | flex-start | flex-end | center | baseline | stretch;
+  }
+}
+
+3.
+浮动设置
+float:left|right|none|inherit
+清除浮动：
+（1）父级div定义伪类：after和zoom
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+（2）在结尾处添加空div标签clear:both
+.clearfloat{clear:both}
+（3）父级div定义overflow:hidden
+ .div1{background:#000080;border:1px solid red;/*解决代码*/width:98%;overflow:hidden}
+4.
+相对定位绝对定位设置
+
+positioen:relative：定位是相对于自身位置定位（设置偏移量的时候，会相对于自身所在的位置偏移）。
+设置了relative的元素仍然处在文档流中，元素的宽高不变，设置偏移量也不会影响其他元素的位置。
+最外层容器设置为relative定位，在没有设置宽度的情况下，宽度是整个浏览器的宽度。
+
+positioen:absolute：定位是相对于离元素最近的设置了绝对或相对定位的父元素决定的，如果没有父元素设置绝对或相对定位，则元素相对于根元素即html元素定位。
+设置了absolute的元素脱了了文档流，元素在没有设置宽度的情况下，宽度由元素里面的内容决定。脱离后原来的位置相当于是空的，下面的元素会来占据位置。
+
+
+5.
+overflow:hidden     overflow属性指定如果内容溢出一个元素的框，会发生什么。  hidden；内容会被修剪，并且其余内容是不可见的。
+display:block   此元素将显示为块级元素，此元素前后会带有换行符。   取消flex布局
+

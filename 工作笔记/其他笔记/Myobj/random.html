@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function myFunction()
+        {
+            var luckList = [];
+            var luckArr = [];
+            while (luckArr.length < 6) {
+                var luckNumRed = Math.ceil(33 * Math.random());
+                luckList.push(luckNumRed);
+                for (var i = 0; i < luckList.length; i++) {
+                    if (luckArr.filter(function (item) { return luckList[i] == item }).length == 0) {
+                        luckArr.push(luckList[i]);
+                    };
+                }
+            }
+            luckArr.sort(function (left, right) { return left == right ? 0 : (left < right ? -1 : 1) });
+            var luckNumBlue = Math.ceil(16 * Math.random());
+            luckArr.push(luckNumBlue);
+            luckList = luckArr.join(" ");
+            document.getElementById("show").innerHTML = luckList;
+          //  alert(luckArr);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <button onclick="myFunction()">Get the winning number</button>
+        <h1 id="show"></h1>
+    </div>
+
+</body>
+</html>

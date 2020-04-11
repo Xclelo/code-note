@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>导航条</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+	<!-- 	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand"></a>
+		</div>
+	</div> -->
+		<div>
+			<ul id="mytab" class="nav nav-pills nav-justified" role="tablist"><!-- nav-stacked垂直 -->
+			  <li role="presentation" class="active"><a href="">Home</a></li>
+			  <li role="presentation"><a href="">Profile</a></li>
+			  <li role="presentation"><a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+      				Dropdown <span class="caret"></span>
+    			</a>
+				 <ul class="dropdown-menu" role="menu">
+				      <li role="presentation"><a>1</a></li>
+				      <li role="presentation"><a>2</a></li>
+				      <li role="presentation"><a>3</a></li>
+				    </ul>
+			 </li>
+			</ul>
+		</div>
+
+
+
+	</nav>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script>
+		$("#mytab a").click(function(e){
+			e.preventDefault();
+			$(this).tab("show");
+		})
+	</script>
+</body>
+</html>

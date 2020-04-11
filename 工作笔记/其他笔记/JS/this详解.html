@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        function fun1() {
+            this;
+        }
+        //fun1();   this==>window
+        //Ondiv.onclick=fun1;   this==>0ndov
+        //ondiv.onclik=function(){
+        //    fun1();  fun1里的this==>window
+        //}
+
+
+
+
+
+
+
+
+
+
+        //this.a = 1000;
+        //var obj = {
+        //    m: 100,
+        //    test: function () {
+        //        alert(this.m);
+        //        return function () {
+        //            alert(this.m);
+        //        }
+        //    }
+        //}
+
+        //(obj.test())();//闭包
+
+
+
+
+
+
+
+
+
+
+
+        //this.a = 1000;
+
+        //function test() {
+        //    this.a = 1;
+        //}
+        //test.prototype.geta = function () {
+        //    return this.a;
+        //}
+        //var p = new test;
+        //console.log(p.geta());//1
+
+
+
+
+
+
+
+
+
+
+
+
+        function test() {
+            this.a = 1;
+        }
+        test.prototype.a = 1000;
+        var p = new test;
+        console.log(p.a);//1
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

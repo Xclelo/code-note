@@ -1,0 +1,47 @@
+﻿<!--
+    引入angular.js文件，使用ng-app指令声明AngularJS管理边界
+    AngularJS双向绑定简单使用
+    双大括号{{}}
+    常用指令演示
+    ng-model ng-bind
+-->
+
+
+<!DOCTYPE html>
+<html hg-app="todoList"><!--声明管理边界-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>todoList</title>
+	<meta charset="utf-8" />
+</head>
+<body ng-controller="Taskctrl">
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('todoList', [])//用module声明
+        .controller('Taskctrl', function ($scope) {
+            $scope.task = "";
+            $scope.tasks = [];
+            $scope.add = function () {
+                $scope.tasks.push($scope.task);
+            }
+
+        })
+    </script>
+    <div>
+        <div class="input-group">
+            <input ng-model="task" type="text" class="form-control"/>
+            <span>
+                <button ng-click="add()">提交</button>
+            </span>
+        </div>
+    </div>
+    <h4 ng-if="tasks.length>0">任务列表</h4>
+    <ul>
+        <li ng-repeat="item in task by $index">
+            {{item}}
+            <a ng-click="tasks.splice($index,1)" >删除</a>
+        </li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        function fun1() {
+            this;
+        }
+        //fun1();   this==>window
+        //Ondiv.onclick=fun1;   this==>0ndov
+        //ondiv.onclik=function(){
+        //    fun1();  fun1里的this==>window
+        //}
+
+
+
+
+
+
+
+
+
+
+        //this.a = 1000;
+        //var obj = {
+        //    m: 100,
+        //    test: function () {
+        //        alert(this.m);
+        //        return function () {
+        //            alert(this.m);
+        //        }
+        //    }
+        //}
+
+        //(obj.test())();//闭包
+
+
+
+
+
+
+
+
+
+
+
+        //this.a = 1000;
+
+        //function test() {
+        //    this.a = 1;
+        //}
+        //test.prototype.geta = function () {
+        //    return this.a;
+        //}
+        //var p = new test;
+        //console.log(p.geta());//1
+
+
+
+
+
+
+
+
+
+
+
+
+        function test() {
+            this.a = 1;
+        }
+        test.prototype.a = 1000;
+        var p = new test;
+        console.log(p.a);//1
+
+
+        /*
+        箭头函数体中的 this 对象，是定义函数时的对象，而不是使用函数时的对象
+        
+        ES6 之前，JavaScript 的 this 对象一直很令人头大，回调函数，经常看到 var self = this 这样的代码，
+        为了将外部 this 传递到回调函数中，那么有了箭头函数，就不需要这样做了，直接使用 this 就行*/
+
+        // 回调函数
+        var Person = {
+            'age': 18,
+            'sayHello': function () {
+                setTimeout(function () {
+                    console.log(this.age);
+                });
+            }
+        };
+        var age = 20;
+        Person.sayHello();  // 20
+
+        var Person1 = {
+            'age': 18,
+            'sayHello': function () {
+                setTimeout(() => {
+                    console.log(this.age);
+                });
+            }
+        };
+        var age = 20;
+        Person1.sayHello();  // 18
+
+
+
+
+        /*button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，
+        即 Window，导致无法操作到被点击的按钮对象。*/
+
+        var button = document.getElementById('userClick');
+        button.addEventListener('click', () => {
+            this.classList.toggle('on');
+        });
+
+
+    </script>
+</body>
+</html>

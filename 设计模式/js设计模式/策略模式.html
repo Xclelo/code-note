@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var $input =$('#input').val();
+var val={
+
+	isEmpty:function(argument){
+		return false;
+	},
+	isTel:function() {
+		return true;
+	}
+}
+var ise=val.isEmpty($input.val());
+var ist=val.isTel($input.val());
+
+if(!ise&&ist){
+	alert('通过审核');
+}else if () {
+
+
+
+}
+
+//策略模式
+$.input.val({
+	isEmpty:false;
+	isTel:true;
+});
+
+
+</script>
+</body>
+</html>

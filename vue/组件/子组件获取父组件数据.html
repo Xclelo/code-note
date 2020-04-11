@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子获取父组件数据$emit</title>
+    <script src="../lib/vue-2.5.21.js"></script>
+</head>
+<body>
+    <div id="app">
+        <childcom @func="show"></childcom>
+         <p @click='emitfun'>{{pfmsg}}</p>
+    </div>
+
+
+    <template id="childcom">
+        <div>
+            <h1>这是子组件</h1>
+            <input type="button" @click="myclick" value="传递父组件数据">
+        </div>
+        
+    </template>
+
+
+
+
+    <script>
+        var childcom={
+            template:'#childcom',
+            data:function(){
+                return{
+                    childmsg:'子组件数据'
+                }
+            },
+            methods:{
+                myclick(){
+                    // this.$emit('func',123,456)
+                     this.$emit('func',this.childmsg)
+                }
+            }
+        }
+    
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:'父组件数据',
+                datamsgformson:null,
+                pfmsg : '点击后派发事件'
+            },
+            mounted(){
+            },
+            created () {
+                 this.$on('wash_Goods',(arg)=> {
+                    console.log(arg)
+                })
+                 this.$on('func',(arg)=> {
+                    console.log(arg)
+                })
+            },
+            methods:{
+                show(data){
+                    console.log("调用父===>"+data);
+                    this.datamsgformson=data;
+                },
+                emitfun(){
+                    this.$emit('wash_Goods',['fish',true,{name:'vue',verison:'2.4'}])
+                }
+            },
+            components:{
+                childcom
+                //childcom:childcom
+            },
+        });
+       
+    </script>
+</body>
+</html>
