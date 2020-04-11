@@ -1,0 +1,70 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-05 20:42:12
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-05 21:03:23
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\动画.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>动画</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+
+                /* 指定动画名 */
+                animation-name: moveDiv;
+                /* 设置动画总耗时 */
+                animation-duration: 2s;
+                /* 设置动画次数  infinite  无数次*/
+                animation-iteration-count: 4;
+                /* 设置交替动画  alternate:来回交替*/
+                animation-direction: alternate;
+                /* 设置动画结束时的状态 */
+                /* animation-fill-mode: forwards; */
+                /* 设置动画的时间函数 */
+                animation-timing-function: ease-in;
+                /* 设置动画的播放状态 paused:暂停 running:播放*/
+                /* animation-play-state: running; */
+                
+            }
+            /* 创建动画 */
+            @keyframes moveDiv {
+                    0%{
+                        transform:translate(0,0);
+                    }
+                    50%{
+                        transform:translate(0,500px);
+                    }
+                    100%{
+                        transform:translate(500px,600px);
+                    }
+                }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div></div>
+        <script src="" async defer></script>
+    </body>
+</html>

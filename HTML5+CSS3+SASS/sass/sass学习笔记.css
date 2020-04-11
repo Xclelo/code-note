@@ -1,0 +1,176 @@
+@charset "UTF-8";
+body {
+  background-color: black;
+}
+
+/*through 包含4*/
+.col-1 {
+  width: 25%;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.col-3 {
+  width: 75%;
+}
+
+.col-4 {
+  width: 100%;
+}
+
+/*to  不好含4*/
+.col-1 {
+  width: 25%;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.col-3 {
+  width: 75%;
+}
+
+.icon-success {
+  background-image: url(../images/icons/success.png);
+}
+
+.icon-error {
+  background-image: url(../images/icons/error.png);
+}
+
+.icon-warning {
+  background-image: url(../images/icons/warning.png);
+}
+
+.item-6 {
+  width: 11px;
+}
+
+.item-4 {
+  width: 9px;
+}
+
+.item-2 {
+  width: 7px;
+}
+
+.div {
+  background-color: #fff;
+}
+
+/*&表示父选择器*/
+.list ul {
+  font-size: 15px;
+}
+
+.list ul li {
+  list-style: none;
+}
+
+.list .list-txt {
+  font-size: 25px;
+}
+
+/*属性的嵌套*/
+body {
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+/*mixin的定义  用 @include 引用
+darken函数作用于颜色加深*/
+.alert-warning {
+  color: #cccccc;
+  background-color: skyblue;
+}
+
+.alert-warning a {
+  color: #5bbce4;
+}
+
+/*@extend  继承:包括父下面的子选择器里面的样式*/
+.extend-dom, .alert-info {
+  padding: 15px;
+}
+
+.extend-dom a, .alert-info a {
+  font-size: 20px;
+}
+
+.alert-info {
+  background-color: chartreuse;
+}
+
+/*!@import*/
+/*这是一个Partials文件,用于@import引入*/
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+数字函数:
+abs(-10)   求-10的绝对值
+round(3.5) =4  四舍五入
+ceil(3.2) =4  向前进一，去掉小数
+ceil(3.6) =3  向后进一，去掉小数
+percentage(650px/1000px) = 65%
+min(1,2,3)
+max(1,2,3)
+*/
+/*
+字符串函数:
+$str:"Hello"
+to-upper-case($str)
+to-lower-case($str)
+str-length($str)
+str-index($str,"Hello")
+str-insert($str,"world",6)
+*/
+/*
+颜色的函数:
+adjust-hue($hsl,137deg) 调整色相的值
+
+lighten($color,50%)  提高亮度
+darken($color,50%)    降低亮度
+
+saturate($color,50%)  提高饱和度
+desaturate($color,50%)  降低饱和度
+
+transparentize($color,0.2)  变得更透明
+opacify($color,0.5)         变得不透明
+*/
+/*
+list函数
+length()
+nth(5 10 ,1) = 5
+index(1px solid red, solid) = 2
+append(5px 10px, 5px) = (5px 10px 5px)
+join(5px 10px,5px 0) = (5px 10px 5px 0)
+join(5px 10px,5px 0, comma) = (5px, 10px, 5px, 0)
+*/
+/*
+$map:(key1:value1,key2:value2,key3:value3)
+$colors:(light:#fff,dark:#000)
+map-get($colors,dark) = #000
+map-keys($colors) = ("light","dark")
+map-values($colors) = (#fff,#000)
+map-has-key($colors,light) = true
+map-merge($colors,(ligh-gray:#e5e5e5)) = (light:#fff,dark:#000,ligh-gray:#e5e5e5)
+map-remove($colors,light,dark) = (ligh-gray:#e5e5e5)
+*/
+/*
+布尔值
+and
+or
+*/
+/*
+Interpolation 的形式  用#
+*/
+.alert-span {
+  color: red;
+}

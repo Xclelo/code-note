@@ -1,0 +1,188 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-07 20:57:22
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-07 23:34:00
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\轮播图案例.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>轮播图</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .view{
+                width: 1200px;
+                height: 500px;
+                margin: 100px auto;
+                position: relative;
+            }
+            ul{
+                width: 100%;
+                height:100%;
+                list-style: none;
+                transform: rotate3d(1,1,0,0deg);
+                /* 保留3D效果 */
+                transform-style: preserve-3d;
+            }
+            ul > li{
+                width: 20%;
+                height:100%;
+                float: left;
+                position: relative;
+                transform-style: preserve-3d;
+                transition: transform 0.5s;
+            }
+            ul > li >span{
+                width: 100%;
+                height:100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            ul > li > span:nth-of-type(1){
+                background: url("./lib/img/car1.png");
+                transform: translateZ(250px);
+            }
+            ul > li > span:nth-of-type(2){
+                background: url("./lib/img/car2.png");
+                transform: translateY(-250px) rotateX(90deg);
+            }
+            ul > li > span:nth-of-type(3){
+                background: url("./lib/img/car3.png");
+                transform: translateZ(-250px) rotateX(180deg);
+            }
+            ul > li > span:nth-of-type(4){
+                background: url("./lib/img/car4.png");
+                transform: translateY(250px) rotateX(-90deg);
+            }
+            ul > li:nth-of-type(2)>span{
+                background-position: -100% 0;
+            }
+            ul > li:nth-of-type(3)>span{
+                background-position: -200% 0;
+            }
+            ul > li:nth-of-type(4)>span{
+                background-position: -300% 0;
+            }
+            ul > li:nth-of-type(5)>span{
+                background-position: -400% 0;
+            }
+            .pre,.next{
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                line-height: 60px;
+                position: absolute;
+                top: 50%;
+                text-decoration: none;
+                font-size: 40px;
+                color: white;
+                transform: translate(0,-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .pre{
+                left: 0;
+            }
+            .next{
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+       <!--  <div class="img">
+            <span></span>
+        </div> -->
+        <div class="view">
+            <ul>
+                <!-- 每一个li就是一个结构块 -->
+                <li>
+                    <!-- 每一个span是这个结构块中的某一个面，用来显示图片 -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+                <li>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="pre">&lt;</a>
+            <a href="javascript:;" class="next">&gt;</a>
+        </div>
+        <script src="../lib/jquery-3.4.1.min.js"></script>
+        <script>
+            var index = 0;
+            var flag = true;
+            $(function(){
+                $(".next").on("click",function(){
+                    if(flag){
+                        index--;
+                        flag = false;
+                        $("li").each(function(key,value){
+                            $(this).css({
+                                "transform":`rotateX(${index*90}deg)`,
+                                "transition-delay":`${key*0.2}s`
+                            })
+                        });
+                        setTimeout(function(){
+                            flag=true;
+                        },1000);
+                    }
+                })
+                $(".pre").on("click",function(){
+                    if(flag){
+                        index++;
+                        flag = false;
+                        $("li").each(function(key,value){
+                            $(this).css({
+                                "transform":`rotateX(${index*90}deg)`,
+                                "transition-delay":`${key*0.2}s`
+                            })
+                        });
+                        setTimeout(function(){
+                            flag=true;
+                        },1000);
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

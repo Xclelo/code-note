@@ -1,0 +1,136 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-05 21:46:28
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-05 23:09:32
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\动画实现时钟.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>时钟</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .clock{
+                margin: 100px auto;
+                width: 300px;
+                height: 300px;
+                border: 10px solid #cccccc;
+                border-radius: 50%;
+                position: relative;
+            }
+            .cover{
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                background-color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .line{
+                height: 300px;
+                width: 8px;
+                background-color: #cccccc;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .line2{
+                transform: translate(-50%,-50%) rotate(30deg);
+            }
+            .line3{
+                transform: translate(-50%,-50%) rotate(60deg);
+            }
+            .line4{
+                transform: translate(-50%,-50%) rotate(90deg);
+            }
+            .line5{
+                transform: translate(-50%,-50%) rotate(120deg);
+            }
+            .line6{
+                transform: translate(-50%,-50%) rotate(150deg);
+            }
+            .hour{
+                width: 8px;
+                height: 60px;
+                background-color: red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-100%);
+                transform-origin: bottom;
+                animation: clockAnimation 43200s linear infinite;
+            }
+            .minute{
+                width: 6px;
+                height: 80px;
+                background-color: yellowgreen;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-100%);
+                transform-origin: bottom;
+                animation: clockAnimation 3600s linear infinite;
+            }
+            .second{
+                width: 4px;
+                height: 100px;
+                background-color: blueviolet;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-100%);
+                transform-origin: bottom;
+                animation-name: clockAnimation;
+                animation-duration: 60s;
+                animation-timing-function: steps(60);
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes clockAnimation {
+                0%{
+                    transform: translate(-50%,-100%) rotate(0deg);
+                }
+                100%{
+                    transform: translate(-50%,-100%) rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="clock">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+            <div class="line line5"></div>
+            <div class="line line6"></div>
+            <div class="cover"></div>
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+            <div class="center"></div>
+
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-02-28 21:42:43
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-01 16:18:00
+ * @FilePath: \学习Code\HTML5\伪元素before-after.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素</title>
+    <style>
+        body{
+            padding: 200px;
+        }
+        div:nth-of-type(1){
+            width: 300px;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+        div:nth-of-type(2){
+            width: 100px;
+            height: 200px;
+            background-color: blue;
+            float: left;
+            position: relative;
+        }
+        div:nth-of-type(1)::before{
+            content: "哈哈";
+            width: 50px;
+            height: 50px;
+            display: block;
+            background-color: skyblue;
+        }
+        div:nth-of-type(1)::after{
+            content: "呵呵";
+            width: 50px;
+            height: 50px;
+            display: block;
+            background-color: skyblue;
+        }
+        div:nth-of-type(2)::before{
+            /*必须添加content属性，否则后期不可见*/
+            content: "";
+            /*默认为行级元素*/
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            top: -10px;
+            left: -10px;
+        }
+        div:nth-of-type(2)::after{
+            /*必须添加content属性，否则后期不可见*/
+            content: "";
+            /*默认为行级元素*/
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            bottom: -10px;
+            left: -10px;
+        }
+
+        div:last-child{
+            background-color: rgb(19, 221, 36);
+            height: 200px;
+            width: 300px;
+            float: left;
+        }
+        h1{
+            /* color: salmon; */
+            /* color: transparent; *//* 完全透明。这个关键字可以被认为是rgba(0,0,0,0)的缩写，rgba是它的计算值。 */
+            display: block;
+            color: rgba(0,0,0,0);
+            text-shadow: 0 0 5px rgba(185, 90, 60, 1);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div>
+        <h1>中华人民万岁</h1>
+    </div>
+    <div></div>
+    <script type="">
+       
+    </script>
+</body>
+</html>

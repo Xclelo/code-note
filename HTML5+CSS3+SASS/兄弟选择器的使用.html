@@ -1,0 +1,65 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-01 15:49:29
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-01 16:09:26
+ * @FilePath: \学习Code\HTML5\兄弟选择器的使用.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>兄弟选择器</title>
+     <style>
+         li{
+             list-style: none;
+             font-size: 70px;
+         }
+         /* .first + li{
+             color: red;
+         }
+         .first ~ li{
+             color: red;
+         } */
+        /* li:first-child{
+            color: red;
+        }
+        li:last-child{
+            color: red;
+        } */
+        /* li:first-of-type{
+            color: red;
+        }
+        li:last-of-type{
+            color: red;
+        } */
+        /* li:nth-child(5){
+            color: red;
+        } */
+        li:nth-last-of-type(-n+5){      /* 最后五个 */
+            color: red;
+        }
+        li:nth-of-type(-n+5){
+            color: sienna;             /* 开始五个 */
+        }
+
+     </style>
+ </head>
+ <body>
+     <ul>
+         <li>1</li>
+         <li>2</li>
+         <li>3</li>
+         <li>4</li>
+         <li>5</li>
+         <li>6</li>
+         <li>7</li>
+         <li>8</li>
+         <li>9</li>
+         <li>10</li>
+     </ul>
+ </body>
+ </html>

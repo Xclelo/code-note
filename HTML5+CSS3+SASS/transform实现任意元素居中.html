@@ -1,0 +1,57 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-05 22:00:41
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-05 22:09:44
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\transform实现任意元素居中.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>元素居中</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .box{
+                height: 300px;
+                width: 300px;
+                background-color: #cccccc;
+                border-radius: 50%;
+                position: relative;
+                margin: 100px auto;
+            }
+            .rec{
+                height: 100px;
+                width: 100px;
+                background-color: red;
+                position: absolute;
+                /* 定位百分比参照父容器 */
+                top: 50%;
+                left: 50%;
+                /* 使用transform实现元素居中，   百分比是参照元素本身的宽高 */
+                transform: translate(-50%,-50%);
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="box">
+            <div class="rec"></div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

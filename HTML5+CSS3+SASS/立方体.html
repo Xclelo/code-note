@@ -1,0 +1,88 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-05 19:35:25
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-05 20:22:39
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\立方体.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>立方体</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body{
+                padding: 0;
+                margin: 0;
+            }
+            .box{
+                width: 200px;
+                height: 200px;
+                margin: 100px auto;
+                position: relative;
+                /* 使被转换的子元素保留其3D效果（需要设置在父元素中） preserve-3d: 保留3D效果  flat:不保留*/
+                transform-style: preserve-3d;
+                transform: rotate3d(1,1,0,-30deg);
+                /* 添加透视景深效果 */
+                /* perspective: 100px; */
+                /* 设置观察点 */
+                /* perspective-origin: -100px 100px; */
+            }
+            .box > div{
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                opacity: 0.5;
+            }
+            .top{
+                background-color: salmon;
+                transform: translateY(-100px) rotateX(90deg);
+
+            }
+            .bottom{
+                background-color: blue;
+                transform: translateY(100px) rotateX(-90deg);
+            }
+            .right{
+                background-color: red;
+                transform: translateX(100px) rotateY(90deg);
+            }
+            .left{
+                background-color: peru;
+                transform: translateX(-100px) rotateY(-90deg);
+            }
+            .front{
+                background-color: slateblue;
+                transform: translateZ(100px);
+            }
+            .back{
+                background-color: yellow;
+                transform: translateZ(-100px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="box">
+            <div class="front">front</div>
+            <div class="back">back</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+            <div class="top">top</div>
+            <div class="bottom">bottom</div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-17 20:21:20
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-17 20:21:29
+ * @FilePath: \学习Code\代码模板库\后端\node\express上传文件\index.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<html>
+
+<head>
+    <title>文件上传表单</title>
+</head>
+
+<body>
+    <h3>文件上传：</h3>
+    选择一个文件上传: <br />
+    <form action="/file_upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" size="50" />
+        <br />
+        <input type="submit" value="上传文件" />
+    </form>
+</body>
+
+</html>

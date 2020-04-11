@@ -1,0 +1,117 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-01-08 21:17:23
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-25 21:25:17
+ * @FilePath: \学习Code\ES6\promise.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        /*     
+        //原始版本
+        var promise = new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: 'data/arr.txt',
+                    dataType: 'json',
+                    success(arr) {
+                        resolve(arr);
+                    },
+                    error(err) {
+                        reject(err);
+                    }
+                })
+            });
+            promise.then(function (arr) {
+                alert(`成功了` + arr)
+            }, function (err) {
+                console.log(err)
+                alert(`失败了`)
+            }); 
+            
+            */
+
+        //进化版
+        function createPromise(url) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url,
+                    dataType: 'text',
+                    success(arr) {
+                        resolve(arr);
+                    },
+                    error(err) {
+                        reject(err);
+                    }
+                })
+            });
+        }
+
+        /* Promise.all([
+            createPromise('data/arr.txt'),
+            createPromise('data/json1.txt')
+        ]).then(function (data) {
+            console.log(data)
+            let [res1, res2] = data
+            console.log(`全部成功了`)
+            console.log(res1)
+            console.log(res2)
+        }, function (err) {
+            console.log(err)
+            console.log(`至少有一个失败了`)
+        }) */
+
+        //ajax返回的就是promise对象
+        /* Promise.all([
+            $.ajax({url:'data/arr.txt',dataType:'json'}),
+            $.ajax({url:'data/json.txt',dataType:'json'})
+        ]).then(function(data){
+            let [res1, res2] = data
+            alert(`全部成功了`)
+            alert(res1)
+            alert(res2)
+        },function(){
+            alert(`至少有一个失败了`)
+        }) */
+
+
+        //另一个方法  方法接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。只有等到所有这些参数实例都返回结果，
+        //           不管是fulfilled还是rejected，包装实例才会结束
+        /* Promise.allSettled([
+            createPromise('data/arr1.txt'),
+            createPromise('data/json.txt')
+        ]).then(function(data){
+            console.log("allSettled succ")
+            console.log(data)
+            let [res1,res2] = data
+        },function(err){
+            alert("allSettled err")
+        }) */
+
+        Promise.race([
+            createPromise('data/arr.txt'),
+            createPromise('data/json.txt')
+        ]).then(function(data){
+            console.log("allSettled succ")
+            console.log(data)
+            let [res1,res2] = data
+        },function(err){
+            alert("allSettled err")
+        })
+
+    </script>
+</body>
+
+</html>

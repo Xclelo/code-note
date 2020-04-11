@@ -1,0 +1,62 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-01-09 22:05:50
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-23 23:05:07
+ * @FilePath: \学习Code\ES6\generator.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+    <script src="../lib/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        async function getData() {
+            let res1 = await $.ajax({ url: 'data/arr.txt', dataType: 'json' })
+            let res2 = await $.ajax({ url: 'data/json.txt', dataType: 'json' })
+            console.log(res1, res2)
+        }
+        getData()
+
+
+
+
+        
+/* 
+        $(function () {
+            $('#send').click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "test.json",
+                    data: { username: $("#username").val(), content: $("#content").val() },
+                    dataType: "json",
+                    success: function (data) {
+                        $('#resText').empty();   //清空resText里面的所有内容
+                        var html = '';
+                        $.each(data, function (commentIndex, comment) {
+                            html += '<div class="comment"><h6>' + comment['username']
+                                + ':</h6><p class="para"' + comment['content']
+                                + '</p></div>';
+                        });
+                        $('#resText').html(html);
+                    }
+                });
+            });
+        });
+*/
+
+
+
+    </script>
+</body>
+
+</html>

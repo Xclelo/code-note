@@ -1,0 +1,78 @@
+<!--
+ * @Author: xcq
+ * @Date: 2020-03-05 21:08:25
+ * @LastEditors: xcq
+ * @LastEditTime: 2020-03-05 21:42:49
+ * @FilePath: \学习Code\HTML5+CSS3+SASS\动画实现无限滚动的图片.html
+ * @Description: 文件头部注释 快捷键：window：ctrl+alt+i,mac：ctrl+cmd+i
+ * @函数注释 快捷键：window：ctrl+alt+t,mac：ctrl+cmd+t
+ -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>滚动图片</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            div{
+                margin: 100px 500px;
+                /* 宽度为ul图片总和的两倍 */
+                width: 800px;
+                height: 150px;
+                overflow: hidden;
+            }
+            div > ul{
+                width: 200%;
+                animation-name: playimg;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+            div > ul > li{
+                float: left;
+                list-style: none;
+            }
+            div > ul > li > img{
+                height: 150px;
+            }
+            div > ul:hover{
+                animation-play-state: paused;
+            }
+            @keyframes playimg {
+                0%{
+                    transform: translateX(0);
+                }
+                100%{
+                    transform: translateX(-800px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div>
+            <ul>
+                <li><img src="./lib/img/you3.jpg" alt=""></li>
+                <li><img src="./lib/img/you4.jpg" alt=""></li>
+                <li><img src="./lib/img/you5.jpg" alt=""></li>
+                <li><img src="./lib/img/you7.jpg" alt=""></li>
+                <li><img src="./lib/img/you3.jpg" alt=""></li>
+                <li><img src="./lib/img/you4.jpg" alt=""></li>
+                <li><img src="./lib/img/you5.jpg" alt=""></li>
+                <li><img src="./lib/img/you7.jpg" alt=""></li>
+            </ul>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

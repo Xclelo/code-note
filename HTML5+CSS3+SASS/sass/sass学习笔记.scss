@@ -1,0 +1,195 @@
+$theme: "dark";
+
+body {
+    @if $theme==dark {
+        background-color: black;
+    }
+
+    @else if $theme==light {
+        background-color: white;
+    }
+
+    @else {
+        background-color: yellow;
+    }
+}
+
+/*through 包含4*/
+@for $i from 1 through 4{
+    .col-#{$i}{
+        width: 100% / 4 * $i;
+    }
+}
+/*to  不好含4*/
+@for $i from 1 to 4{
+    .col-#{$i}{
+        width: 100% / 4 * $i;
+    }
+}
+
+$icons: success error warning;
+@each $icon in $icons {
+    .icon-#{$icon}{
+        background-image: url(../images/icons/#{$icon}.png);
+    }
+}
+
+$i: 6;
+
+@while $i>0 {
+    .item-#{$i} {
+        width: 5px + $i;
+    }
+
+    $i: $i - 2;
+}
+
+
+$colors: (light:#fff,dark:#000);
+@function color($key){
+    @if not map-has-key($colors,$key) {
+        @error "在$colors里面没有找到#{$key}这个 key";
+        // @warn "在$colors里面没有找到#{$key}这个 key";
+    }
+    @return map-get($map: $colors, $key: $key)
+}
+.div{
+    background-color: color(light);
+}
+
+/*&表示父选择器*/
+.list {
+    ul {
+        font-size: 15px;
+
+        li {
+            list-style: none;
+        }
+    }
+
+    & &-txt {
+        font-size: 25px;
+    }
+}
+
+
+/*属性的嵌套*/
+body {
+    font: {
+        family: Helvetica;
+        size: 15px;
+        weight: normal;
+    }
+}
+
+
+/*mixin的定义  用 @include 引用
+darken函数作用于颜色加深*/
+$myColor1:red;
+$myColor2:black;
+
+@mixin alert($myColor) {
+    color: #cccccc;
+    background-color: $myColor;
+
+    a {
+        color: darken($color:$myColor, $amount: 10);
+        // color: darken($myColor,20%);
+    }
+}
+
+.alert-warning {
+    // @include alert(skyblue);
+    @include alert($myColor:skyblue);
+}
+
+/*@extend  继承:包括父下面的子选择器里面的样式*/
+.extend-dom {
+    padding: 15px;
+}
+
+.extend-dom a {
+    font-size: 20px;
+}
+
+.alert-info {
+    @extend .extend-dom;
+    background-color: chartreuse;
+}
+
+/*!@import*/
+@import "./base";
+
+
+
+/*
+数字函数:
+abs(-10)   求-10的绝对值
+round(3.5) =4  四舍五入
+ceil(3.2) =4  向前进一，去掉小数
+ceil(3.6) =3  向后进一，去掉小数
+percentage(650px/1000px) = 65%
+min(1,2,3)
+max(1,2,3)
+*/
+
+/*
+字符串函数:
+$str:"Hello"
+to-upper-case($str)
+to-lower-case($str)
+str-length($str)
+str-index($str,"Hello")
+str-insert($str,"world",6)
+*/
+
+/*
+颜色的函数:
+adjust-hue($hsl,137deg) 调整色相的值
+
+lighten($color,50%)  提高亮度
+darken($color,50%)    降低亮度
+
+saturate($color,50%)  提高饱和度
+desaturate($color,50%)  降低饱和度
+
+transparentize($color,0.2)  变得更透明
+opacify($color,0.5)         变得不透明
+*/
+
+/*
+list函数
+length()
+nth(5 10 ,1) = 5
+index(1px solid red, solid) = 2
+append(5px 10px, 5px) = (5px 10px 5px)
+join(5px 10px,5px 0) = (5px 10px 5px 0)
+join(5px 10px,5px 0, comma) = (5px, 10px, 5px, 0)
+*/
+
+/*
+$map:(key1:value1,key2:value2,key3:value3)
+$colors:(light:#fff,dark:#000)
+map-get($colors,dark) = #000
+map-keys($colors) = ("light","dark")
+map-values($colors) = (#fff,#000)
+map-has-key($colors,light) = true
+map-merge($colors,(ligh-gray:#e5e5e5)) = (light:#fff,dark:#000,ligh-gray:#e5e5e5)
+map-remove($colors,light,dark) = (ligh-gray:#e5e5e5)
+*/
+
+/*
+布尔值
+and
+or
+*/
+
+/*
+Interpolation 的形式  用#
+*/
+$version: "0.0.1";
+$name:"span";
+
+.alert-#{$name} {
+    color: red;
+}
