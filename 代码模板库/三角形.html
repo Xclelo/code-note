@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>三角形</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .box{
+                height: 100px;
+                width: 100px;
+                background-color: aqua;
+            }
+            .box::before{
+                content: '';
+                width: 0;
+                height: 0;
+                border: 10px solid transparent;
+                border-top-color: red ;
+                /* position: relative; */
+            }
+            .box::after{
+                content: '';
+                width: 0;
+                height: 0;
+                border: 20px solid transparent;
+                border-top-color: black ;
+                /* position: absolute; */
+            }
+
+            .triangle{
+                width: 0;
+                height: 0;
+                border-top: 50px solid black;
+                border-right: 50px solid red;
+                border-bottom: 50px solid green;
+                border-left: 50px solid blue;
+            }
+
+            .triangle{
+                width: 0;
+                height: 0;
+                border-top: 50px solid black;
+                border-right: 50px solid transparent;
+                border-bottom: 50px solid transparent;
+                border-left: 50px solid transparent;
+            }
+            /*下面代码更加简洁*/
+            .triangle{
+                width: 0;
+                height: 0;
+                border: 50px solid transparent;
+                border-top-color: black ;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="box"></div>
+        
+        <!-- <div class="triangle"></div> -->
+        <script src="" async defer></script>
+    </body>
+</html>
