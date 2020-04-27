@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域原理</title>
+
+    
+    <script type="text/javascript">
+        var localHandler = function(data){
+            console.log("'我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：' + data.result")
+        }
+    </script>
+    <script type="text/javascript" src="http://remoteserver.com/remote.js">
+        /*
+        remote.js文件代码如下：
+        localHandler({"result":"我是远程js带来的数据"});
+        */
+    </script>
+
+
+
+
+    <script type="text/javascript">
+        // 得到航班信息查询结果后的回调函数
+        var flightHandler = function(data){
+            alert('你查询的航班结果是：票价 ' + data.price + ' 元，' + '余票 ' + data.tickets + ' 张。');
+        };
+        // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）
+        var url = "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&callback=flightHandler";
+        /*
+            调用的url中传递了一个code参数，告诉服务器我要查的是CA1998次航班的信息，
+            而callback参数则告诉服务器，我的本地回调函数叫做flightHandler，所以请把查询结果传入这个函数中进行调用。
+
+            服务端返回：
+            flightHandler({
+                "code": "CA1998",
+                "price": 1780,
+                "tickets": 5
+            });
+        */
+        // 创建script标签，设置其属性
+        var script = document.createElement('script');
+        script.setAttribute('src', url);
+        // 把script标签加入head，此时调用开始
+        document.getElementsByTagName('head')[0].appendChild(script); 
+    </script>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+    /* jQuery封装的jsonp */
+        jQuery(document).ready(function(){ 
+        $.ajax({
+                type: "get",
+                async: false,
+                url: "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998",
+                dataType: "jsonp",
+                jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+                jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+                success: function(json){
+                    alert('您查询到航班信息：票价： ' + json.price + ' 元，余票： ' + json.tickets + ' 张。');
+                },
+                error: function(){
+                    alert('fail');
+                }
+            });
+        });
+    </script>
+
+
+
+</head>
+<body>
+    
+</body>
+</html>
