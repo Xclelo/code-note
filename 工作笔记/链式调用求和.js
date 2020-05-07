@@ -14,14 +14,12 @@ var Obj = {
     }
 }
 Obj.func().func();
-console.log(Obj.a);    //3
+// console.log(Obj.a);    //3
 
-
+//简单版本
 function add (num) {
     var count = num;
     var _b = function(l){
-        console.log(`arg:`)
-        console.log(arguments)
         count += l;
         return _b
     }
@@ -30,7 +28,28 @@ function add (num) {
     }
     return _b
 }
-var c = add(1)(2,4)(3);
+var c = add(1)(2)(3);
+console.log(c)    //6
+
+
+//解题
+function add () {
+    var count = 0;
+    for(let i of arguments){
+        count += i;
+    }
+    var _b = function(l){
+        for(let i of arguments){
+            count += i;
+        }
+        return _b
+    }
+    _b.valueOf = function(){
+        return count
+    }
+    return _b
+}
+var c = add(1,2)(3,4);
 console.log(c.valueOf())    //6
 
 
