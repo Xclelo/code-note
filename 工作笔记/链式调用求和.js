@@ -50,6 +50,6 @@ function add () {
     return _b
 }
 var c = add(1,2)(3,4);
-console.log(c.valueOf())    //6
+console.log(c.valueOf())    //10
 
 

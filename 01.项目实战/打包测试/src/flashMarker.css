@@ -1,0 +1,40 @@
+.flashMaker-popup {
+    position: relative;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow:3px 4px 8px 0px rgba(13,20,55,0.28);
+}
+.flashMaker-popup ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.flashMaker-popup :before {
+    position: absolute;
+    content: "";
+    top: 40%;
+    left: -20px;
+    /* border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ffffff; */
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ffffff;
+}
+/* 白色覆盖*/
+.flashMaker-popup :after {
+    position: absolute;
+    content: "";
+    top: 40%;
+    left: -20px;
+    /* border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff; */
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ffffff;
+}
