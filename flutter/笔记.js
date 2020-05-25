@@ -27,7 +27,7 @@
 
  /*
  组件笔记：
-
+组件第三方库：https://pub.dev/
  * 按钮组件： RaisedButton
  * 基础路由： Navigator.push    Navigator.pop
  * 命名路由： 定义：MaterialApp(routes:{'/':(context)=>Home)  使用：Navigator.pushNamed(context, '/search');

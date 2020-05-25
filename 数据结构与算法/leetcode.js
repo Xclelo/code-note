@@ -19,7 +19,7 @@ function quickSort(arr) {
     return quickSort(left).concat(currIndex, quickSort(right))
 }
 
-// console.log(quickSort([5, 1, 54, 9, 8, 2, 1, 4, 3, 0, 25]));
+console.log(quickSort([5, 1, 54, 9, 8, 2, 1, 4, 3, 0, 25]));
 
 
 
