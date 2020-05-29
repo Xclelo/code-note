@@ -67,7 +67,7 @@ module.exports = {
             exclude: /node_modules/,
             use: [
               /* 
-                开启多进程打包。 
+                开启多进程打包。 npm i thread-loader -D
                 进程启动大概为600ms，进程通信也有开销。
                 只有工作消耗时间比较长，才需要多进程打包
               */
